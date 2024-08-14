@@ -1,4 +1,4 @@
-
+// Computer
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -11,24 +11,25 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-//Human
+// Human
 
 function getHumanChoice() {
-  let humanChoice = prompt("Make your choice. 1: Rock 2: Paper 3: Scissors");
-  let alert3 = alert("Please choose amongst 3.");
+  let humanChoice = prompt("Make your choice. \nRock \nPaper \nScissors");
+  return humanChoice;
+  // let choiceAlert = alert("Please choose amongst 3.");
 
-  if (humanChoice == 1) {
-    humanChoice = "rock";
-    return humanChoice;
-  } else if (humanChoice == 2) {
-    humanChoice = "paper";
-    return humanChoice;
-  } else if (humanChoice == 3) {
-    humanChoice = "scissors";
-    return humanChoice;
-  } else {
-    return alert3;
-  }
+  // if (humanChoice == 1) {
+  //   humanChoice = "rock";
+  //   return humanChoice;
+  // } else if (humanChoice == 2) {
+  //   humanChoice = "paper";
+  //   return humanChoice;
+  // } else if (humanChoice == 3) {
+  //   humanChoice = "scissors";
+  //   return humanChoice;
+  // } else {
+  //   return choiceAlert;
+  // }
 }
 
 // Game Logic
@@ -39,28 +40,28 @@ let computerScore = 0;
 function playRound () {
   let computerChoice = getComputerChoice();
   let humanChoice = getHumanChoice();
-  let noWinner = "Draw. Human score: ${humanScore} Computer score: ${computerScore}";
+  let noWinner = `Draw. \n\nHuman score: ${humanScore} \nComputer score: ${computerScore}`;
   let winner;
 
-  if (humanChoice === computerChoice) {
-    return noWinner;
+  if (humanChoice.toLowerCase() === computerChoice) {
+    return alert(noWinner);
   }
-    else if (humanChoice === "rock" && computerChoice === "scissors" || 
-    humanChoice === "paper" && computerChoice === "rock" || 
-    humanChoice === "scissors" && computerChoice === "paper") {
+    else if (humanChoice.toLowerCase() === "rock" && computerChoice === "scissors" || 
+    humanChoice.toLowerCase() === "paper" && computerChoice === "rock" || 
+    humanChoice.toLowerCase() === "scissors" && computerChoice === "paper") {
       humanScore++;
       winner = "Human"
     }
-    else if ((computerChoice === "rock" && humanChoice === "scissors") || 
-    (computerChoice === "paper" && humanChoice === "rock") || 
-    (computerChoice === "scissors" && humanChoice === "paper")) {
+    else if ((computerChoice === "rock" && humanChoice.toLowerCase() === "scissors") || 
+    (computerChoice === "paper" && humanChoice.toLowerCase() === "rock") || 
+    (computerChoice === "scissors" && humanChoice.toLowerCase() === "paper")) {
       computerScore++;
       winner = "Computer"
     }
     else {
-      return `Invalid choice.`;
+      return alert(`Invalid choice.`);
     }
 
-  let winnerIs = `${winner} wins! Human score: ${humanScore} Computer score: ${computerScore}`;
-  return winnerIs;
+  let winnerIs = `${winner} wins! \n\nHuman score: ${humanScore} \nComputer score: ${computerScore}`;
+  return alert(winnerIs);
 }
